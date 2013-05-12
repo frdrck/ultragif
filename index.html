@@ -1,51 +1,36 @@
-<html>
+<html ng-app>
   <head>
-    <script src="js/angular.js" type="text/javascript"></script>
-    <script src="js/jquery.js" type="text/javascript"></script>
-    <script src="js/LZWEncoder.js" type="text/javascript"></script>
-    <script src="js/NeuQuant.js" type="text/javascript"></script>
-    <script src="js/GIFEncoder.js" type="text/javascript"></script>
-    <script src="js/dropzone.js" type="text/javascript"></script>
-    <script src="js/config.js" type="text/javascript"></script>
-    <script src="js/layer.js" type="text/javascript"></script>
-    <script src="js/canvas.js" type="text/javascript"></script>
-    <script src="js/ultragif.js" type="text/javascript"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/LZWEncoder.js"></script>
+    <script src="js/NeuQuant.js"></script>
+    <script src="js/GIFEncoder.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/ultragif.js"></script>
+    <script src="js/UltraGifCtrl.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <body>
+  <body ng-controller="UltraGifCtrl">
     <div id="display">
       <canvas id="untitled"></canvas>
     </div>
     <div id="timeline">
       <table>
-        <tr>
-          <td><img class="thumbnail" src="img/1351622747529-dumpfm-frederick-maggie1.gif"></td>
-          <td>|---------------------------------------------------------------------|</td>
-        </tr>
-        <tr>
-          <td><img class="thumbnail" src="img/1367951940559-dumpfm-mascara-0_b4a95_f71c0b04_L.gif"></td>
-          <td>|---------------------------------------------------------------------|</td>
-        </tr>
-        <tr>
-          <td><img class="thumbnail" src="img/1368161387675-dumpfm-frederick-FUCK.png"> </td>
-          <td>|---------------------------------------------------------------------|</td>
-        </tr>
-        <tr>
-          <td><img class="thumbnail" src="img/th_Shrek-2.gif"></td>
-          <td>|---------------------------------------------------------------------|</td>
-        </tr>
-        <tr>
-          <td><img class="thumbnail" src="img/1368390992733-dumpfm-BUTTPOISON-IMG_5432.jpg"></td>
-          <td>|---------------------------------------------------------------------|</td>
-        </tr>
-        <tr>
-          <td></td>  
-          <td>
-            <form action="/file-upload"
-                  class="dropzone"
-                  id="my-dropzone"></form>
-          </td>  
+        <tr ng-repeat="layer in layers">
+          <td><img class="thumbnail" ng-src="{{layer.src}}"></td>
+          <td>x: <input ng-model="layer.x" ng-change="canvas.draw()"></td>
+          <td>y: <input ng-model="layer.y" ng-change="canvas.draw()"></td>
+          <td>x: <input ng-model="layer.scale_x" ng-change="canvas.draw()"></td>
+          <td>y: <input ng-model="layer.scale_y" ng-change="canvas.draw()"></td>
+          <td>degrees: <input ng-model="layer.rotation" ng-change="canvas.draw()"></td>
         </tr>
       </table>
+      <button ng-click="canvas.draw()">draw</button>
+      <form action="/file-upload"
+            class="dropzone"
+            id="my-dropzone"></form>
     </div>
 </html>
