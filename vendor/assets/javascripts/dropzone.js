@@ -436,7 +436,7 @@ require.register("dropzone/lib/dropzone.js", function(exports, require, module){
       acceptParameter: null,
       enqueueForUpload: true,
       previewsContainer: null,
-      dictDefaultMessage: "Drop files here to upload",
+      dictDefaultMessage: "drag and drop image here",
       dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
       dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
       dictFileTooBig: "File is too big ({{filesize}}MB). Max filesize: {{maxFilesize}}MB.",
