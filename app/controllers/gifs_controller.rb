@@ -39,6 +39,7 @@ class GifsController < ApplicationController
 
   # POST /gifs
   # POST /gifs.json
+
   def create
     @gif = Gif.new(params[:gif])
 

@@ -1,17 +1,3 @@
-<%= form_for(@gif) do |f| %>
-  <% if @gif.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@gif.errors.count, "error") %> prohibited this gif from being saved:</h2>
-
-      <ul>
-      <% @gif.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for(@gif, action: "upload", html: {class: "dropzone",
+      id: "my-awesome-dropzone"}) do |f| %>
 <% end %>
