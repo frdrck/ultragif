@@ -1,12 +1,4 @@
-canvases = {};
-
 function initialize_canvas(name) {
-  var canvas = document.getElementById(name);
-  var ctx = canvas.getContext("2d");
-  canvas.width = WIDTH;
-  canvas.height = HEIGHT;
-  ctx.setFillColor('#ffffff');
-  ctx.fillRect(0,0,WIDTH, HEIGHT);
 }
 
 function prepare_encoder() {
@@ -37,4 +29,9 @@ window.onload = function () {
   myDropzone.on("addedfile", function(file) {
       console.log(file);
   });
+
+  var canvas = new Canvas("untitled");
+  canvas.addLayer("img/1368390992733-dumpfm-BUTTPOISON-IMG_5432.jpg");
+  canvas.addLayer("img/1368161387675-dumpfm-frederick-FUCK.png");
+  canvas.draw();
 }
