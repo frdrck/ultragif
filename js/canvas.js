@@ -19,6 +19,7 @@ Canvas.prototype.addLayer = function(src) {
   var layer = new Layer(src);
   this.ordered_layers.push(layer);
   this.layers[src] = layer;
+  return layer;
 }
 
 Canvas.prototype.draw = function() {

@@ -31,7 +31,11 @@ window.onload = function () {
   });
 
   var canvas = new Canvas("untitled");
-  canvas.addLayer("img/1368390992733-dumpfm-BUTTPOISON-IMG_5432.jpg");
-  canvas.addLayer("img/1368161387675-dumpfm-frederick-FUCK.png");
+  var dog = canvas.addLayer("img/1368390992733-dumpfm-BUTTPOISON-IMG_5432.jpg");
+  var face = canvas.addLayer("img/1368161387675-dumpfm-frederick-FUCK.png");
+
+  face.rotate(-20);
+  face.translate(-40, 0);
+
   canvas.draw();
 }
