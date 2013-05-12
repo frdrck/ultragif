@@ -6,6 +6,10 @@ function Canvas(elementId, width, height) {
   this.ctx.setFillColor('#ffffff');
   this.ctx.fillRect(0, 0, width, height);
 
+  this.encoder = new GIFEncoder();
+  this.encoder.start();
+  this.encoder.setRepeat(0);
+
   // A list of layers on the canvas. The items in the list are drawn on top
   // of each other from the beginning of the list to the end, so the end
   // of the list represents the top layer.
@@ -27,4 +31,20 @@ Canvas.prototype.draw = function() {
     var layer = this.ordered_layers[i];
     layer.draw(this.ctx);
   }
+}
+
+Canvas.prototype.add_frame = function() {
+  console.log("adding frame");
+  this.encoder.addFrame(this.ctx);
+}
+
+Canvas.prototype.export_gif = function() {
+  debugger
+  this.encoder.finish();
+  var data = this.encoder.stream().getData();
+  data = btoa(data);
+
+  var img = document.createElement('img')
+  img.src = "data:image/gif;base64, " + data
+  document.body.appendChild(img)
 }
