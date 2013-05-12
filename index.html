@@ -5,20 +5,17 @@
     <script src="js/NeuQuant.js" type="text/javascript"></script>
     <script src="js/GIFEncoder.js" type="text/javascript"></script>
     <script src="js/dropzone.js" type="text/javascript"></script>
+    <script src="js/config.js" type="text/javascript"></script>
+    <script src="js/ultragif.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <form action="/file-upload"
-          class="dropzone"
-                id="my-awesome-dropzone"></form>
-    <input type="file" name="file" />
-    <div id="stack">
-      <canvas class-="layer"></canvas>
-      <canvas class="layer"></canvas>
-      <canvas class="layer"></canvas>
-    </div>
-    <div id="backstage">
-      <canvas id="sprite"></canvas>
-      <canvas id="scratch"></canvas>
+    <div>
+      <form action="/file-upload"
+            class="dropzone"
+            id="dropzone"></form>
+    <div>
+    <div id="layers">
+      <canvas id="untitled"></canvas>
     </div>
 </html>
