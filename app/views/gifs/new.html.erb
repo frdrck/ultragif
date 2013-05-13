@@ -1,5 +1,21 @@
-<h1>New gif</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', gifs_path %>
+<div id="display">
+    <canvas id="untitled"></canvas>
+  </div>
+  <div id="timeline">
+    <table>
+      <tr ng-repeat="layer in layers">
+        <td><img class="thumbnail" ng-src="{{layer.src}}"></td>
+        <td>x: <input ng-model="layer.x" ng-change="canvas.draw()"></td>
+        <td>y: <input ng-model="layer.y" ng-change="canvas.draw()"></td>
+        <td>x: <input ng-model="layer.scale_x" ng-change="canvas.draw()"></td>
+        <td>y: <input ng-model="layer.scale_y" ng-change="canvas.draw()"></td>
+        <td>degrees: <input ng-model="layer.rotation" ng-change="canvas.draw()"></td>
+      </tr>
+    </table>
+    <button ng-click="canvas.draw()">preview</button>
+    <button ng-click="canvas.add_frame()">add frame</button>
+    <button ng-click="canvas.export_gif()">export</button>
+    <form action="/file-upload"
+          class="dropzone"
+          id="my-dropzone"></form>
+  </div>
