@@ -17,6 +17,9 @@ function Canvas(elementId, width, height) {
 
   // A dictionary relating layer names to layers
   this.layers = {};
+
+  // eventually stores the gif data.
+  this.data = undefined;
 }
 
 Canvas.prototype.addLayer = function(src) {
@@ -34,17 +37,14 @@ Canvas.prototype.draw = function() {
 }
 
 Canvas.prototype.add_frame = function() {
-  console.log("adding frame");
   this.encoder.addFrame(this.ctx);
 }
 
-Canvas.prototype.export_gif = function() {
-  debugger
-  this.encoder.finish();
-  var data = this.encoder.stream().getData();
-  data = btoa(data);
-
-  var img = document.createElement('img')
-  img.src = "data:image/gif;base64, " + data
-  document.body.appendChild(img)
-}
+Canvas.prototype.render_gif_data = function() {
+  if (!this.data) {
+    this.encoder.finish();
+    this.data = this.encoder.stream().getData();
+    this.data = btoa(this.data);
+  }
+  return this.data;
+};
