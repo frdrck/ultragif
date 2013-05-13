@@ -12,9 +12,10 @@
         <td>degrees: <input ng-model="layer.rotation" ng-change="canvas.draw()"></td>
       </tr>
     </table>
-    <button ng-click="canvas.draw()">preview</button>
-    <button ng-click="canvas.add_frame()">add frame</button>
-    <button ng-click="canvas.export_gif()">export</button>
+      <button ng-click="canvas.draw()">preview frame</button>
+      <button ng-click="canvas.add_frame()">add frame</button>
+      <button ng-click="preview_gif()">preview gif</button>
+      <button ng-click="save_to_server()">save to server</button>
     <form action="/file-upload"
           class="dropzone"
           id="my-dropzone"></form>
