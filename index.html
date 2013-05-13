@@ -15,12 +15,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body ng-controller="UltraGifCtrl">
+    <input type="radio" name="tool" value="translate" checked>translate</option>
+    <input type="radio" name="tool" value="scale">scale</option>
+    <input type="radio" name="tool" value="rotate">rotate</option>
     <div id="display">
       <canvas id="untitled"></canvas>
     </div>
     <div id="timeline">
       <table>
-        <tr ng-repeat="layer in layers">
+        <tr ng-repeat="(i,layer) in layers"
+            ng-class="{selected: i == canvas.selectedLayer}"
+            ng-click="canvas.selectLayer(i)">
           <td><img class="thumbnail" ng-src="{{layer.src}}"></td>
           <td>x: <input ng-model="layer.x" ng-change="canvas.draw()"></td>
           <td>y: <input ng-model="layer.y" ng-change="canvas.draw()"></td>

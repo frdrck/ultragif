@@ -18,6 +18,8 @@ function Canvas(elementId, width, height) {
   // A dictionary relating layer names to layers
   this.layers = {};
 
+  this.selectedLayer = undefined;
+
   // eventually stores the gif data.
   this.data = undefined;
 }
@@ -27,6 +29,11 @@ Canvas.prototype.addLayer = function(src) {
   this.ordered_layers.push(layer);
   this.layers[src] = layer;
   return layer;
+}
+
+Canvas.prototype.selectLayer = function(i) {
+  console.log("selected", i);
+  this.selectedLayer = i;
 }
 
 Canvas.prototype.draw = function() {
