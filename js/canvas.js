@@ -32,7 +32,6 @@ Canvas.prototype.addLayer = function(src) {
 }
 
 Canvas.prototype.selectLayer = function(i) {
-  console.log("selected", i);
   this.selectedLayer = i;
 }
 
@@ -55,3 +54,31 @@ Canvas.prototype.render_gif_data = function() {
   }
   return this.data;
 };
+
+Canvas.prototype.mousedown = function(e) {
+  if (this.selectedLayer) {
+    this.layers[this.selectedLayer].init_translate();
+    this.ismousedown = true;
+    this.mouse_x0 = e.x;
+    this.mouse_y0 = e.y;
+  }
+}
+
+Canvas.prototype.mousemove = function(e) {
+  if (this.ismousedown) {
+    var dx = e.x - this.mouse_x0;
+    var dy = e.y - this.mouse_y0;
+    this.layers[this.selectedLayer].translate(dx, dy);
+    this.draw();
+  }
+}
+
+Canvas.prototype.mouseup = function(e) {
+  this.ismousedown = false;
+}
+
+Canvas.prototype.mouseenter = function(e) {
+}
+
+Canvas.prototype.mouseleave = function(e) {
+}

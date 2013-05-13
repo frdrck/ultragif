@@ -7,11 +7,19 @@ function Layer(src) {
   this.scale_x = 1;
   this.scale_y = 1;
   this.rotation = 0;
+
+  this.trans_x = 0;
+  this.trans_y = 0;
+}
+
+Layer.prototype.init_translate = function() {
+  this.trans_x = this.x;
+  this.trans_y = this.y;
 }
 
 Layer.prototype.translate = function(dx, dy) {
-  this.x += dx;
-  this.y += dy;
+  this.x = this.trans_x + dx; 
+  this.y = this.trans_y + dy;
 }
 
 // Scales the layer across both axes if only 'scale' is provided.

@@ -19,7 +19,12 @@
     <input type="radio" name="tool" value="scale">scale</option>
     <input type="radio" name="tool" value="rotate">rotate</option>
     <div id="display">
-      <canvas id="untitled"></canvas>
+      <canvas id="untitled"
+              ng-mousedown="canvas.mousedown($event)"
+              ng-mouseup="canvas.mouseup($event)"
+              ng-mousemove="canvas.mousemove($event)"
+              ng-mouseenter="canvas.mouseenter($event)"
+              ng-mouseleave="canvas.mouseleave($event)"></canvas>
     </div>
     <div id="timeline">
       <table>
